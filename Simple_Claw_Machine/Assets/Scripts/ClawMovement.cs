@@ -12,54 +12,71 @@ public class ClawMovement : MonoBehaviour
     private const float BACK_LIMIT = -1.6f;
     private const float FRONT_LIMIT = -4.1f;
 
+    public bool leftRight_done;
+    public bool backFront_done;
+
     private void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!leftRight_done)
         {
-            Vector3 newPos = new Vector3(SPEED * Time.deltaTime, 0, 0);
-
-            if (LeftRight.transform.position.x + newPos.x < RIGHT_LIMIT)
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                LeftRight.transform.position += newPos;
+                Vector3 newPos = new Vector3(SPEED * Time.deltaTime, 0, 0);
+
+                if (LeftRight.transform.position.x + newPos.x < RIGHT_LIMIT)
+                {
+                    LeftRight.transform.position += newPos;
+                }
+
             }
 
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Vector3 newPos = new Vector3(-(SPEED * Time.deltaTime), 0, 0);
-
-            if (LeftRight.transform.position.x + newPos.x > LEFT_LIMIT)
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                LeftRight.transform.position += newPos;
-            }
-        }
+                Vector3 newPos = new Vector3(-(SPEED * Time.deltaTime), 0, 0);
 
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            Vector3 newPos = new Vector3(0, 0, SPEED * Time.deltaTime);
-
-            if(BackFront.transform.position.z + newPos.z < BACK_LIMIT)
-            {
-
-                BackFront.transform.position += newPos;
+                if (LeftRight.transform.position.x + newPos.x > LEFT_LIMIT)
+                {
+                    LeftRight.transform.position += newPos;
+                }
             }
 
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Vector3 newPos = new Vector3(0, 0, -(SPEED * Time.deltaTime));
-
-            Debug.Log(BackFront.transform.position.z);
-
-            if (BackFront.transform.position.z + newPos.z > FRONT_LIMIT)
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
-                BackFront.transform.position += newPos;
+                leftRight_done = true;
+            }
+        }
+       
+        if(!backFront_done)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                Vector3 newPos = new Vector3(0, 0, SPEED * Time.deltaTime);
+
+                if (BackFront.transform.position.z + newPos.z < BACK_LIMIT)
+                {
+
+                    BackFront.transform.position += newPos;
+                }
+
             }
 
-        }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                Vector3 newPos = new Vector3(0, 0, -(SPEED * Time.deltaTime));
 
+                if (BackFront.transform.position.z + newPos.z > FRONT_LIMIT)
+                {
+                    BackFront.transform.position += newPos;
+                }
+
+            }
+
+
+            if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                backFront_done = true;
+            }
+        }
 
     }
 }
