@@ -119,5 +119,18 @@ public class ClawMovement : MonoBehaviour
             yield return null;
         }
 
+        //rising state
+        for(float t=0; t < PIPE_DURATION; t+=Time.deltaTime)
+        {
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), t / PIPE_FRACTION);
+            yield return null;
+        }
+
+        for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
+        {
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), t / PIPE_FRACTION);
+            yield return null;
+        }
+
     }
 }

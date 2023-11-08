@@ -1130,7 +1130,7 @@ MonoBehaviour:
   pipe1: {fileID: 755604149}
   pipe2: {fileID: 1072428055}
   rightHand: {fileID: 1862603426}
-  leftHand2: {fileID: 701012829}
+  leftHand: {fileID: 701012829}
 --- !u!1 &1105258072
 GameObject:
   m_ObjectHideFlags: 0
