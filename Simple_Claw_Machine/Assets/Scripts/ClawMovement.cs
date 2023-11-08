@@ -45,8 +45,8 @@ public class ClawMovement : MonoBehaviour
                 leftRight_done = true;
             }
         }
-       
-        if(!backFront_done)
+
+        if (!backFront_done)
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
