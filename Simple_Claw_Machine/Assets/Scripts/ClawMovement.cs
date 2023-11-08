@@ -15,17 +15,20 @@ public class ClawMovement : MonoBehaviour
     public GameObject BackFront;
 
     private const float SPEED = 2f;
+    private Vector3 DROPBOX_POS;
 
     [Header("MOTOR")]
     private const float LEFT_LIMIT = -1.6f;
     private const float RIGHT_LIMIT = 0.6f;
     private const float BACK_LIMIT = -1.6f;
     private const float FRONT_LIMIT = -4.1f;
+    private const float MOTOR_DURATION = 1f;
+    private const float MOTOR_FRICTION = 5f;
 
     [Header("PIPE")]
     public GameObject pipe1;
     public GameObject pipe2;
-    private const float PIPE_FRACTION = 10f;
+    private const float PIPE_FRICTION = 10f;
     private const float PIPE_DURATION = 0.5f;
     private const float PIPE_POS_Y = -2f;
 
@@ -34,8 +37,12 @@ public class ClawMovement : MonoBehaviour
     public GameObject leftHand;
     private const float HAND_POS_Z = 0.09f;
     private const float HAND_DURATION = 1.5f;
-    private const float HAND_FRACTION = 10f;
+    private const float HAND_FRICTION = 10f;
 
+    private void Start()
+    {
+        DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
+    }
 
     private void Update()
     {
@@ -101,36 +108,48 @@ public class ClawMovement : MonoBehaviour
         //claw descending
         for(float t =0; t< PIPE_DURATION; t+=Time.deltaTime)
         {
-            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POS_Y, pipe1.transform.localPosition.z), t/PIPE_FRACTION);
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POS_Y, pipe1.transform.localPosition.z), t/PIPE_FRICTION);
             yield return null;
         }
 
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, PIPE_POS_Y, pipe2.transform.localPosition.z), t / PIPE_FRACTION);
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, PIPE_POS_Y, pipe2.transform.localPosition.z), t / PIPE_FRICTION);
             yield return null;
         }
 
         //close state
         for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
         {
-            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, new Vector3(rightHand.transform.localPosition.x, rightHand.transform.localPosition.y, -(HAND_POS_Z)), t / HAND_FRACTION);
-            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, new Vector3(leftHand.transform.localPosition.x, leftHand.transform.localPosition.y, HAND_POS_Z), t / HAND_FRACTION);
+            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, new Vector3(rightHand.transform.localPosition.x, rightHand.transform.localPosition.y, -(HAND_POS_Z)), t / HAND_FRICTION);
+            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, new Vector3(leftHand.transform.localPosition.x, leftHand.transform.localPosition.y, HAND_POS_Z), t / HAND_FRICTION);
             yield return null;
         }
 
         //rising state
         for(float t=0; t < PIPE_DURATION; t+=Time.deltaTime)
         {
-            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), t / PIPE_FRACTION);
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), t / PIPE_FRICTION);
             yield return null;
         }
 
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), t / PIPE_FRACTION);
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), t / PIPE_FRICTION);
             yield return null;
         }
 
+        //Claw move to the dropbox
+        for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
+        {
+            BackFront.transform.position = Vector3.Lerp(BackFront.transform.position, new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z), t / MOTOR_FRICTION);
+            yield return null;
+        }
+
+        for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
+        {
+            LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z), t / MOTOR_FRICTION);
+            yield return null;
+        }
     }
 }
