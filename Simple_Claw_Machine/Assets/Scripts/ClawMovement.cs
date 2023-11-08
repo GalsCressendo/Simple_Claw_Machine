@@ -38,10 +38,14 @@ public class ClawMovement : MonoBehaviour
     private const float HAND_POS_Z = 0.09f;
     private const float HAND_DURATION = 1.5f;
     private const float HAND_FRICTION = 10f;
+    private Vector3 rightHand_initialPos;
+    private Vector3 leftHand_initialPos;
 
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
+        rightHand_initialPos = rightHand.transform.localPosition;
+        leftHand_initialPos = leftHand.transform.localPosition;
     }
 
     private void Update()
@@ -149,6 +153,14 @@ public class ClawMovement : MonoBehaviour
         for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
         {
             LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z), t / MOTOR_FRICTION);
+            yield return null;
+        }
+
+        //Claw reopened
+        for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
+        {
+            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, rightHand_initialPos, t / HAND_FRICTION);
+            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, leftHand_initialPos, t / HAND_FRICTION);
             yield return null;
         }
     }
