@@ -519,7 +519,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.96999973, z: 0}
+  m_ConnectedAnchor: {x: 0, y: -0.9700046, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1127,6 +1127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftRight: {fileID: 1599185934}
   BackFront: {fileID: 867951813}
+  pipe1: {fileID: 755604149}
+  pipe2: {fileID: 1072428055}
 --- !u!1 &1105258072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1793,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.95000136, z: 0}
+  m_ConnectedAnchor: {x: 0, y: -0.94999915, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -2125,7 +2127,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.9799999, z: 0}
+  m_ConnectedAnchor: {x: 0, y: -0.9799987, z: 0}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:

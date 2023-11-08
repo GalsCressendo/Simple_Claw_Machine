@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ClawMovement : MonoBehaviour
@@ -12,71 +13,83 @@ public class ClawMovement : MonoBehaviour
     private const float BACK_LIMIT = -1.6f;
     private const float FRONT_LIMIT = -4.1f;
 
-    public bool leftRight_done;
-    public bool backFront_done;
+    [Header("PIPE")]
+    public GameObject pipe1;
+    public GameObject pipe2;
+    private const float PIPE_FRACTION = 10f;
+    private const float PIPE_DURATION = 0.5f;
+    private const float PIPE_POSY = -2f;
+
 
     private void Update()
     {
-        if (!leftRight_done)
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            Vector3 newPos = new Vector3(SPEED * Time.deltaTime, 0, 0);
+
+            if (LeftRight.transform.position.x + newPos.x < RIGHT_LIMIT)
             {
-                Vector3 newPos = new Vector3(SPEED * Time.deltaTime, 0, 0);
-
-                if (LeftRight.transform.position.x + newPos.x < RIGHT_LIMIT)
-                {
-                    LeftRight.transform.position += newPos;
-                }
-
+                LeftRight.transform.position += newPos;
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                Vector3 newPos = new Vector3(-(SPEED * Time.deltaTime), 0, 0);
+        }
 
-                if (LeftRight.transform.position.x + newPos.x > LEFT_LIMIT)
-                {
-                    LeftRight.transform.position += newPos;
-                }
-            }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 newPos = new Vector3(-(SPEED * Time.deltaTime), 0, 0);
 
-            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            if (LeftRight.transform.position.x + newPos.x > LEFT_LIMIT)
             {
-                leftRight_done = true;
+                LeftRight.transform.position += newPos;
             }
         }
 
-        if (!backFront_done)
+
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            Vector3 newPos = new Vector3(0, 0, SPEED * Time.deltaTime);
+
+            if (BackFront.transform.position.z + newPos.z < BACK_LIMIT)
             {
-                Vector3 newPos = new Vector3(0, 0, SPEED * Time.deltaTime);
 
-                if (BackFront.transform.position.z + newPos.z < BACK_LIMIT)
-                {
-
-                    BackFront.transform.position += newPos;
-                }
-
+                BackFront.transform.position += newPos;
             }
 
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                Vector3 newPos = new Vector3(0, 0, -(SPEED * Time.deltaTime));
-
-                if (BackFront.transform.position.z + newPos.z > FRONT_LIMIT)
-                {
-                    BackFront.transform.position += newPos;
-                }
-
-            }
-
-
-            if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                backFront_done = true;
-            }
         }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Vector3 newPos = new Vector3(0, 0, -(SPEED * Time.deltaTime));
+
+            if (BackFront.transform.position.z + newPos.z > FRONT_LIMIT)
+            {
+                BackFront.transform.position += newPos;
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(ClawDownState());
+        }
+
+    }
+
+    private IEnumerator ClawDownState()
+    {
+        for(float t =0; t< PIPE_DURATION; t+=Time.deltaTime)
+        {
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POSY, pipe1.transform.localPosition.z), t/PIPE_FRACTION);
+            yield return null;
+        }
+
+        for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
+        {
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, PIPE_POSY, pipe2.transform.localPosition.z), t / PIPE_FRACTION);
+            yield return null;
+        }
+
 
     }
 }
