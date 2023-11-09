@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 6709699468096926741}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1443,6 +1443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6465447183710277013}
   - component: {fileID: 6812644530666268981}
+  - component: {fileID: -3933413396854862305}
   m_Layer: 0
   m_Name: Bulldog
   m_TagString: Untagged
@@ -1494,6 +1495,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3933413396854862305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907507971848134249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd62357d48b222c4992d8aec17ffbc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attribute: {fileID: 11400000, guid: 17d525c0e66a1b647979ef22be6845d1, type: 2}
 --- !u!1 &9013807817912212702
 GameObject:
   m_ObjectHideFlags: 0

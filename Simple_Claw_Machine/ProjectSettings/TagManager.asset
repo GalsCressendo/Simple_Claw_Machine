@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WinDetector
   - GameManager
+  - Body
   layers:
   - Default
   - TransparentFX

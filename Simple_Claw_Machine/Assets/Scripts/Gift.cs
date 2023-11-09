@@ -14,6 +14,10 @@ public class Gift : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.DisplayWinCutscene();
+        if (other.gameObject.tag == "Body")
+        {
+            Prize prize = other.transform.root.transform.GetComponent<Prize>();
+            gameManager.DisplayWinCutscene(prize);
+        }
     }
 }
