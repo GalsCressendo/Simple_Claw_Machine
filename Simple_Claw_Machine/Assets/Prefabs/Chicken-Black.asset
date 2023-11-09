@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prizeName: Black Chicken
   UI_Gameobject: {fileID: 8312078703543269147, guid: cfa91e81a84b35d4e83d9973f80b6c36, type: 3}
-  description: 'The teeth are white, if they smile it''s pretty sweet '
+  description: 'their teeth are white, if they smile it''s pretty sweet '

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static bool gameIsOver = false;
     public WinScreenUI winScreenUI;
     public GameObject rewardPopUpCamera;
-    private const float UI_DELAY = 4f;
+    private const float UI_DELAY = 3.5f;
 
     public void DisplayWinCutscene(Prize prize)
     {
