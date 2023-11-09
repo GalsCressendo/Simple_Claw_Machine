@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee5c458dc802484eb2d4ff246210b39, type: 3}
+  m_Name: Bulldog-Brown
+  m_EditorClassIdentifier: 
+  prizeName: Brown Dog
+  UI_Gameobject: {fileID: 8907507971848134249, guid: f5b9cd018d842af408559bfb11db8d95, type: 3}
+  description: 'Poor little bug on the wall, ding jing!
+
+    No one''s to love him
+    at all, ding jing!'

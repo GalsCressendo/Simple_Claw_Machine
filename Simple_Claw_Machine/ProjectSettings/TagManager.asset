@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WinDetector
+  - GameManager
+  - Body
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,7 @@ TagManager:
   - UI
   - Claw
   - MachineBox
-  - 
+  - UI-Prize
   - 
   - 
   - 
