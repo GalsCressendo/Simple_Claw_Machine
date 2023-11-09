@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator DisplayWinUI(Prize prize)
     {
-        winScreenUI.DisplayRewardScreen(prize.attribute.prizeName, prize.attribute.description);
+        winScreenUI.DisplayRewardScreen(prize.attribute);
 
         yield return new WaitForSeconds(UI_DELAY);
         if(!rewardPopUpCamera.activeInHierarchy)
