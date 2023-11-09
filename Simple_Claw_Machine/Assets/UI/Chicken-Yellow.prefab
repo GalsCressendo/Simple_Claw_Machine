@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7288973349616681079}
   - component: {fileID: 1900430832967700456}
   - component: {fileID: 6293778457637453324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6966841720273609699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 57553745598888780}
   - component: {fileID: 2685110367263809846}
   - component: {fileID: 8400209368164072559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 741917325019106481}
   - component: {fileID: 1349038872166345975}
   - component: {fileID: 4556275799966247585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 8573693035039995959}
   - component: {fileID: 7990946497715301612}
   - component: {fileID: 6785203457911944298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 3108705618625566148}
   - component: {fileID: 1218253354431703742}
   - component: {fileID: 3189647333516118304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 1545361456367549651}
   - component: {fileID: 7263734957398742347}
   - component: {fileID: 8282176636257378796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1639372204467228262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 8656737022847955517}
   - component: {fileID: 4148872753539724818}
   - component: {fileID: 5369992315226397240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 8933511559013961247}
   - component: {fileID: 1911124808104511787}
   - component: {fileID: 502882055432323366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -915,7 +915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103980635990311794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,8 +953,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5288558048516286870}
   - component: {fileID: 5755246111975746263}
-  m_Layer: 0
-  m_Name: Chicken 1
+  m_Layer: 8
+  m_Name: Chicken-Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,21 +1052,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bab0487dac1bd0c43a9f9909c5407549, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 29b2887458248d442afaa4fd6fff0cf9, type: 2}
     - target: {fileID: 919132149155446097, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
