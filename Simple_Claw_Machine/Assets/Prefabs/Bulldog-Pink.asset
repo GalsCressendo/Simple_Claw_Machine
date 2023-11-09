@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee5c458dc802484eb2d4ff246210b39, type: 3}
-  m_Name: Bulldog-Brown
+  m_Name: Bulldog-Pink
   m_EditorClassIdentifier: 
-  prizeName: Brown Dog
-  UI_Gameobject: {fileID: 8907507971848134249, guid: f5b9cd018d842af408559bfb11db8d95, type: 3}
-  description: 'Poor little bug on the wall, ding jing!
-
-    No one''s to love him
-    at all, ding jing!'
+  prizeName: Pink Dog
+  UI_Gameobject: {fileID: 8907507971848134249, guid: 8203fb5078c139e4a8507b0c2b120572, type: 3}
+  description: Why does it look like a pig?

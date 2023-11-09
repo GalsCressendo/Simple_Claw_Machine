@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee5c458dc802484eb2d4ff246210b39, type: 3}
-  m_Name: Bulldog-Brown
+  m_Name: Girrafe-Orange
   m_EditorClassIdentifier: 
-  prizeName: Brown Dog
-  UI_Gameobject: {fileID: 8907507971848134249, guid: f5b9cd018d842af408559bfb11db8d95, type: 3}
-  description: 'Poor little bug on the wall, ding jing!
-
-    No one''s to love him
-    at all, ding jing!'
+  prizeName: Orange Giraffe
+  UI_Gameobject: {fileID: 7858523234314516654, guid: 1e528dcc33a4fe4489c1c019fb5ce8de, type: 3}
+  description: boy do these guys have an appetite
