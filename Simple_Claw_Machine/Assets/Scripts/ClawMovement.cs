@@ -30,7 +30,7 @@ public class ClawMovement : MonoBehaviour
     public GameObject pipe1;
     public GameObject pipe2;
     private const float PIPE_SPEED = 0.7f;
-    private const float PIPE_DURATION = 2f;
+    private const float PIPE_DURATION = 2.5f;
     private const float PIPE_POS_Y = -2f;
 
     [Header("HANDS")]
