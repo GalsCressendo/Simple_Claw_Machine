@@ -1,6 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngineInternal;
 
 public class ClawMovement : MonoBehaviour
 {
@@ -8,6 +8,7 @@ public class ClawMovement : MonoBehaviour
     {
         None = 0,
         Grab = 1,
+        Off = 2,
     }
 
     private ClawState CLAW_STATE;
@@ -54,7 +55,12 @@ public class ClawMovement : MonoBehaviour
 
     private void Update()
     {
-        if(CLAW_STATE == ClawState.None)
+        if(GameManager.gameIsOver)
+        {
+            CLAW_STATE = ClawState.Off;
+        }
+
+        if (CLAW_STATE == ClawState.None)
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -101,7 +107,7 @@ public class ClawMovement : MonoBehaviour
 
             }
         }
-       
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -114,7 +120,7 @@ public class ClawMovement : MonoBehaviour
     private IEnumerator ClawGrabState()
     {
         //claw descending
-        for(float t =0; t< PIPE_DURATION; t+=Time.deltaTime)
+        for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
             pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POS_Y, pipe1.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
@@ -136,7 +142,7 @@ public class ClawMovement : MonoBehaviour
 
 
         //rising state
-        for(float t=0; t < PIPE_DURATION; t+=Time.deltaTime)
+        for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
             pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
@@ -157,7 +163,7 @@ public class ClawMovement : MonoBehaviour
 
         for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
         {
-            LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z),MOTOR_SPEED * Time.deltaTime);
+            LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z), MOTOR_SPEED * Time.deltaTime);
             yield return null;
         }
 
@@ -169,6 +175,10 @@ public class ClawMovement : MonoBehaviour
             yield return null;
         }
 
-        CLAW_STATE = ClawState.None;
+        if(!GameManager.gameIsOver)
+        {
+            CLAW_STATE = ClawState.None;
+        }
+
     }
 }
