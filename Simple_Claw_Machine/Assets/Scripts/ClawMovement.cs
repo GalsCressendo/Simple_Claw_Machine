@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class ClawMovement : MonoBehaviour
 {
@@ -32,20 +33,23 @@ public class ClawMovement : MonoBehaviour
     private const float PIPE_DURATION = 0.5f;
     private const float PIPE_POS_Y = -2f;
 
-    [Header("HAND")]
+    [Header("HANDS")]
     public GameObject rightHand;
     public GameObject leftHand;
-    private const float HAND_POS_Z = 0.09f;
-    private const float HAND_DURATION = 1.5f;
-    private const float HAND_FRICTION = 10f;
-    private Vector3 rightHand_initialPos;
-    private Vector3 leftHand_initialPos;
+    private const float CLOSE_HAND_SPEED = 0.3f;
+    private const float OPEN_HAND_SPEED = 1.5f;
+    private const float CLOSE_HAND_TIME = 5f;
+    private const float OPEN_HAND_TIME = 3f;
+    private Quaternion right_initialRotation;
+    private Quaternion left_initialRotation;
+    private const float angle_z = 70f;
 
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
-        rightHand_initialPos = rightHand.transform.localPosition;
-        leftHand_initialPos = leftHand.transform.localPosition;
+
+        right_initialRotation = rightHand.transform.localRotation;
+        left_initialRotation = leftHand.transform.localRotation;
     }
 
     private void Update()
@@ -123,12 +127,13 @@ public class ClawMovement : MonoBehaviour
         }
 
         //close state
-        for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
+        for (float t = 0; t < CLOSE_HAND_TIME; t += Time.deltaTime)
         {
-            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, new Vector3(rightHand.transform.localPosition.x, rightHand.transform.localPosition.y, -(HAND_POS_Z)), t / HAND_FRICTION);
-            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, new Vector3(leftHand.transform.localPosition.x, leftHand.transform.localPosition.y, HAND_POS_Z), t / HAND_FRICTION);
+            rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, Quaternion.Euler(rightHand.transform.localRotation.eulerAngles.x, rightHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
+            leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, Quaternion.Euler(leftHand.transform.localRotation.eulerAngles.x, leftHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
+
 
         //rising state
         for(float t=0; t < PIPE_DURATION; t+=Time.deltaTime)
@@ -157,11 +162,13 @@ public class ClawMovement : MonoBehaviour
         }
 
         //Claw reopened
-        for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
+        for (float t = 0; t < CLOSE_HAND_TIME; t += Time.deltaTime)
         {
-            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, rightHand_initialPos, t / HAND_FRICTION);
-            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, leftHand_initialPos, t / HAND_FRICTION);
+            rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, right_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
+            leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, left_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
+
+        CLAW_STATE = ClawState.None;
     }
 }
