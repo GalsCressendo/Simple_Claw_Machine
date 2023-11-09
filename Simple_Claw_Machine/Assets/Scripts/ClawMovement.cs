@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class ClawMovement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class ClawMovement : MonoBehaviour
     public GameObject LeftRight;
     public GameObject BackFront;
 
-    private const float SPEED = 2f;
+    private const float SPEED = 0.8f;
     private Vector3 DROPBOX_POS;
 
     [Header("MOTOR")]
@@ -22,30 +23,33 @@ public class ClawMovement : MonoBehaviour
     private const float RIGHT_LIMIT = 0.6f;
     private const float BACK_LIMIT = -1.6f;
     private const float FRONT_LIMIT = -4.1f;
-    private const float MOTOR_DURATION = 1f;
-    private const float MOTOR_FRICTION = 5f;
+    private const float MOTOR_DURATION = 3f;
+    private const float MOTOR_SPEED = 0.7f;
 
     [Header("PIPE")]
     public GameObject pipe1;
     public GameObject pipe2;
-    private const float PIPE_FRICTION = 10f;
-    private const float PIPE_DURATION = 0.5f;
+    private const float PIPE_SPEED = 0.7f;
+    private const float PIPE_DURATION = 3f;
     private const float PIPE_POS_Y = -2f;
 
-    [Header("HAND")]
+    [Header("HANDS")]
     public GameObject rightHand;
     public GameObject leftHand;
-    private const float HAND_POS_Z = 0.09f;
-    private const float HAND_DURATION = 1.5f;
-    private const float HAND_FRICTION = 10f;
-    private Vector3 rightHand_initialPos;
-    private Vector3 leftHand_initialPos;
+    private const float CLOSE_HAND_SPEED = 0.3f;
+    private const float OPEN_HAND_SPEED = 1.5f;
+    private const float CLOSE_HAND_TIME = 5f;
+    private const float OPEN_HAND_TIME = 3f;
+    private Quaternion right_initialRotation;
+    private Quaternion left_initialRotation;
+    private const float angle_z = 70f;
 
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
-        rightHand_initialPos = rightHand.transform.localPosition;
-        leftHand_initialPos = leftHand.transform.localPosition;
+
+        right_initialRotation = rightHand.transform.localRotation;
+        left_initialRotation = leftHand.transform.localRotation;
     }
 
     private void Update()
@@ -112,56 +116,59 @@ public class ClawMovement : MonoBehaviour
         //claw descending
         for(float t =0; t< PIPE_DURATION; t+=Time.deltaTime)
         {
-            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POS_Y, pipe1.transform.localPosition.z), t/PIPE_FRICTION);
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, PIPE_POS_Y, pipe1.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, PIPE_POS_Y, pipe2.transform.localPosition.z), t / PIPE_FRICTION);
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, PIPE_POS_Y, pipe2.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
         //close state
-        for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
+        for (float t = 0; t < CLOSE_HAND_TIME; t += Time.deltaTime)
         {
-            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, new Vector3(rightHand.transform.localPosition.x, rightHand.transform.localPosition.y, -(HAND_POS_Z)), t / HAND_FRICTION);
-            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, new Vector3(leftHand.transform.localPosition.x, leftHand.transform.localPosition.y, HAND_POS_Z), t / HAND_FRICTION);
+            rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, Quaternion.Euler(rightHand.transform.localRotation.eulerAngles.x, rightHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
+            leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, Quaternion.Euler(leftHand.transform.localRotation.eulerAngles.x, leftHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
+
 
         //rising state
         for(float t=0; t < PIPE_DURATION; t+=Time.deltaTime)
         {
-            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), t / PIPE_FRICTION);
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), t / PIPE_FRICTION);
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
         //Claw move to the dropbox
         for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
         {
-            BackFront.transform.position = Vector3.Lerp(BackFront.transform.position, new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z), t / MOTOR_FRICTION);
+            BackFront.transform.position = Vector3.Lerp(BackFront.transform.position, new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z), MOTOR_SPEED * Time.deltaTime);
             yield return null;
         }
 
         for (float t = 0; t < MOTOR_DURATION; t += Time.deltaTime)
         {
-            LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z), t / MOTOR_FRICTION);
+            LeftRight.transform.position = Vector3.Lerp(LeftRight.transform.position, new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z),MOTOR_SPEED * Time.deltaTime);
             yield return null;
         }
 
         //Claw reopened
-        for (float t = 0; t < HAND_DURATION; t += Time.deltaTime)
+        for (float t = 0; t < OPEN_HAND_TIME; t += Time.deltaTime)
         {
-            rightHand.transform.localPosition = Vector3.Lerp(rightHand.transform.localPosition, rightHand_initialPos, t / HAND_FRICTION);
-            leftHand.transform.localPosition = Vector3.Lerp(leftHand.transform.localPosition, leftHand_initialPos, t / HAND_FRICTION);
+            rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, right_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
+            leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, left_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
+
+        CLAW_STATE = ClawState.None;
     }
 }
