@@ -8,7 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Animator camera_animator;
-    public static bool gameIsOver = false;
+    public static bool gameIsOver = true;
     public WinScreenUI winScreenUI;
     public GameObject rewardPopUpCamera;
     private const float UI_DELAY = 3.5f;

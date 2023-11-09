@@ -11,7 +11,7 @@ public class ClawMovement : MonoBehaviour
         Off = 2,
     }
 
-    private ClawState CLAW_STATE;
+    private static ClawState CLAW_STATE;
 
     public GameObject LeftRight;
     public GameObject BackFront;
@@ -51,6 +51,11 @@ public class ClawMovement : MonoBehaviour
 
         right_initialRotation = rightHand.transform.localRotation;
         left_initialRotation = leftHand.transform.localRotation;
+    }
+
+    public static void GameBeginState()
+    {
+        CLAW_STATE = ClawState.None;
     }
 
     private void Update()

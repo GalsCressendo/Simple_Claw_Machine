@@ -9,7 +9,7 @@ public class PrizeSpawn : MonoBehaviour
     public int prizeCount = 30;
     private float spawnDelay = 0.05f;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(SpawnPrizes());
     }
