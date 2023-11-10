@@ -133,11 +133,15 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bab0487dac1bd0c43a9f9909c5407549, type: 2}
+      objectReference: {fileID: 2100000, guid: f415fa2adba81264c86d58622edb23a3, type: 2}
     - target: {fileID: -7511558181221131132, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 29b2887458248d442afaa4fd6fff0cf9, type: 2}
+      objectReference: {fileID: 2100000, guid: 4da04057810a7124b87fcc1c716bd4a2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ce51f01a6cd6914abcba6cfdddaa83e, type: 2}
     - target: {fileID: 919132149155446097, guid: 60efb4780854c6c449af3d6605ee5a80, type: 3}
       propertyPath: m_Name
       value: Chicken
