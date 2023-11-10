@@ -5,18 +5,42 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public Button StartButton;
     public GameObject Panel;
     public PrizeSpawn prizeSpawner;
     public Animator camera_anim;
     public GameManager gameManager;
     [SerializeField] Audio audioManager;
 
+    [Header("GUIDE UI")]
+    [SerializeField] Button backButton;
+    [SerializeField] GameObject GuideContainer;
+
+    [Header("Buttons")]
+    public Button StartButton;
+    public Button GuideButton;
+    public Button ExitButton;
+
     private void Start()
     {
         GameManager.gameIsOver = true;
         gameManager.DisablePauseButton();
         StartButton.onClick.AddListener(GameStart);
+        GuideButton.onClick.AddListener(ShowTutorial);
+        GuideContainer.SetActive(false);
+    }
+
+    private void HideMainButtons()
+    {
+        StartButton.gameObject.SetActive(false);
+        GuideButton.gameObject.SetActive(false);
+        ExitButton.gameObject.SetActive(false);
+    }
+
+    private void ShowTutorial()
+    {
+        audioManager.ButtonsClicked();
+        HideMainButtons();
+        GuideContainer.SetActive(true);
     }
 
     private void GameStart()
