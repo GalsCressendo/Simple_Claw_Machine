@@ -76,11 +76,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void MainMenuButtonClicked()
+    public void MainMenuButtonClicked()
     {
         DestroyAllPrizes();
         gameIsOver = true;
-        camera_animator.SetTrigger("gameStop");
+        camera_animator.SetBool("gameStop",true);
         winScreenUI.DestroyRewardPreview();
         if (rewardPopUpCamera.activeInHierarchy)
         {

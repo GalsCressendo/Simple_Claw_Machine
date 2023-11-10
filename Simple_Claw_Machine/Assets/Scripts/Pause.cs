@@ -25,6 +25,7 @@ public class Pause : MonoBehaviour
         pauseButton.onClick.AddListener(EnablePausePanel);
         resumeButton.onClick.AddListener(ResumeButtonOnClick);
         restartButton.onClick.AddListener(RestartButtonOnClick);
+        mainMenuButton.onClick.AddListener(MainMenuButtonOnClick);
 
     }
 
@@ -61,5 +62,9 @@ public class Pause : MonoBehaviour
         DisablePausePanel();
     }
 
-
+    private void MainMenuButtonOnClick()
+    {
+        gameManager.MainMenuButtonClicked();
+        DisablePausePanel();
+    }
 }

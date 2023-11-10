@@ -42,6 +42,7 @@ public class MainMenuUI : MonoBehaviour
     {
         camera_anim.SetTrigger("gameBegin");
         camera_anim.SetBool("getPrize", false);
+        camera_anim.SetBool("gameStop", false);
         DisableMainMenu();
 
         StartCoroutine(prizeSpawner.SpawnPrizes());
