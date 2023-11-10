@@ -100,7 +100,7 @@ public class Audio : MonoBehaviour
         if (!au.source.isPlaying)
         {
             Play(CLAW1_AUDIO);
-            SetVolume(CLAW1_AUDIO, 1f);
+            SetVolume(CLAW1_AUDIO, 0.5f);
         }
 
     }
@@ -113,7 +113,7 @@ public class Audio : MonoBehaviour
         if (!au.source.isPlaying)
         {
             Play(CLAW2_AUDIO);
-            SetVolume(CLAW2_AUDIO, 1f);
+            SetVolume(CLAW2_AUDIO, 0.5f);
         }
     }
 
