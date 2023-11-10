@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Audio : MonoBehaviour
@@ -90,6 +91,50 @@ public class Audio : MonoBehaviour
     {
         Play(WIN_AUDIO);
         SetVolume(WIN_AUDIO,1f);
+    }
+
+    public void ClawMove1()
+    {
+        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == CLAW1_AUDIO);
+
+        if (!au.source.isPlaying)
+        {
+            Play(CLAW1_AUDIO);
+            SetVolume(CLAW1_AUDIO, 1f);
+        }
+
+    }
+
+    public void ClawMove2()
+    {
+
+        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == CLAW2_AUDIO);
+
+        if (!au.source.isPlaying)
+        {
+            Play(CLAW2_AUDIO);
+            SetVolume(CLAW2_AUDIO, 1f);
+        }
+    }
+
+    public void StopClawMove1()
+    {
+        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == CLAW1_AUDIO);
+
+        if(au.source.isPlaying)
+        {
+            au.source.Stop();
+        }
+    }
+
+    public void StopClawMove2()
+    {
+        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == CLAW2_AUDIO);
+
+        if (au.source.isPlaying)
+        {
+            au.source.Stop();
+        }
     }
 
 

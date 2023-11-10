@@ -21,6 +21,7 @@ public class ClawMovement : MonoBehaviour
     private Vector3 DROPBOX_POS;
 
     Coroutine clawMoves;
+    [SerializeField] Audio audioManager;
 
     [Header("MOTOR")]
     private const float LEFT_LIMIT = -1.6f;
@@ -91,6 +92,8 @@ public class ClawMovement : MonoBehaviour
                     LeftRight.transform.position += newPos;
                 }
 
+                audioManager.ClawMove1();
+
             }
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -101,6 +104,8 @@ public class ClawMovement : MonoBehaviour
                 {
                     LeftRight.transform.position += newPos;
                 }
+
+                audioManager.ClawMove1();
             }
 
 
@@ -114,6 +119,8 @@ public class ClawMovement : MonoBehaviour
                     BackFront.transform.position += newPos;
                 }
 
+                audioManager.ClawMove1();
+
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
@@ -125,6 +132,13 @@ public class ClawMovement : MonoBehaviour
                     BackFront.transform.position += newPos;
                 }
 
+                audioManager.ClawMove1();
+
+            }
+
+            if(Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                audioManager.StopClawMove1();
             }
         }
 
@@ -132,7 +146,13 @@ public class ClawMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CLAW_STATE = ClawState.Grab;
+            audioManager.ButtonsClicked();
             clawMoves = StartCoroutine(ClawGrabState());
+        }
+
+        if(CLAW_STATE == ClawState.Grab)
+        {
+            audioManager.ClawMove2();
         }
 
     }
@@ -195,6 +215,8 @@ public class ClawMovement : MonoBehaviour
             leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, left_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
+
+        audioManager.StopClawMove2();
 
         if(!GameManager.gameIsOver)
         {

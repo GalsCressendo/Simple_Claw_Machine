@@ -6772,6 +6772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftRight: {fileID: 1599185934}
   BackFront: {fileID: 867951813}
+  audioManager: {fileID: 2010171647}
   pipe1: {fileID: 755604149}
   pipe2: {fileID: 1072428055}
   rightHand: {fileID: 1405529047}
