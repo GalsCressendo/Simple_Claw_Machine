@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class ClawMovement : MonoBehaviour
@@ -67,7 +65,7 @@ public class ClawMovement : MonoBehaviour
     public void ResetClawPosition()
     {
         rightHand.transform.localRotation = right_initialRotation;
-        leftHand.transform.localRotation=left_initialRotation;
+        leftHand.transform.localRotation = left_initialRotation;
         LeftRight.transform.position = new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z);
         BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
         pipe1.transform.localPosition = Vector3.zero;
@@ -76,10 +74,10 @@ public class ClawMovement : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.gameIsOver)
+        if (GameManager.gameIsOver)
         {
             CLAW_STATE = ClawState.Off;
-            if(clawMoves != null)
+            if (clawMoves != null)
             {
                 StopCoroutine(clawMoves);
 
@@ -141,7 +139,7 @@ public class ClawMovement : MonoBehaviour
 
             }
 
-            if(Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+            if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
             {
                 audioManager.StopClawMove1();
             }
@@ -155,7 +153,7 @@ public class ClawMovement : MonoBehaviour
             clawMoves = StartCoroutine(ClawGrabState());
         }
 
-        if(CLAW_STATE == ClawState.Grab)
+        if (CLAW_STATE == ClawState.Grab)
         {
             audioManager.ClawMove2();
         }
@@ -224,7 +222,7 @@ public class ClawMovement : MonoBehaviour
         DisableColliders();
         audioManager.StopClawMove2();
 
-        if(!GameManager.gameIsOver)
+        if (!GameManager.gameIsOver)
         {
             CLAW_STATE = ClawState.None;
         }
@@ -233,7 +231,7 @@ public class ClawMovement : MonoBehaviour
 
     private void DisableColliders()
     {
-        foreach(Collider col in colliders)
+        foreach (Collider col in colliders)
         {
             col.enabled = false;
         }

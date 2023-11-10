@@ -50,6 +50,9 @@ public class Pause : MonoBehaviour
         gameManager.PauseGame();
         EnablePausePanel();
         gameManager.DisablePauseButton();
+
+        audioManager.StopClawMove1();
+        audioManager.StopClawMove2();
     }
 
     private void RestartButtonOnClick()
