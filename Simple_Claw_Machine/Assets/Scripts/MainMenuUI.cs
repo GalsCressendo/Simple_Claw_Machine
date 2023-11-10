@@ -7,7 +7,7 @@ public class MainMenuUI : MonoBehaviour
 {
     public Button StartButton;
     public GameObject Panel;
-    public GameObject spawnObject;
+    public PrizeSpawn prizeSpawner;
     public Animator camera_anim;
 
 
@@ -30,11 +30,21 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
+    public void EnableMainMenu()
+    {
+        if (!Panel.activeInHierarchy)
+        {
+            Panel.SetActive(true);
+        }
+    }
+
     IEnumerator GameBeginSequence()
     {
         camera_anim.SetTrigger("gameBegin");
+        camera_anim.SetBool("getPrize", false);
         DisableMainMenu();
-        spawnObject.SetActive(true);
+
+        StartCoroutine(prizeSpawner.SpawnPrizes());
 
         yield return new WaitForSeconds(0.1f);
         GameManager.gameIsOver = false;

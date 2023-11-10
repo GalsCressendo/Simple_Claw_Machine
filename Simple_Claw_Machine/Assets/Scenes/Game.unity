@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &54046626
 Transform:
   m_ObjectHideFlags: 0
@@ -4840,9 +4840,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera_animator: {fileID: 1042419814}
+  prizeSpawner: {fileID: 54046627}
   winScreenUI: {fileID: 841664697}
   rewardPopUpCamera: {fileID: 188924108}
-  prizeSpawner: {fileID: 54046627}
+  mainMenuUI: {fileID: 1854362419}
 --- !u!1 &1553351095
 GameObject:
   m_ObjectHideFlags: 0
@@ -5700,7 +5701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartButton: {fileID: 849073203}
   Panel: {fileID: 136111343}
-  spawnObject: {fileID: 54046625}
+  prizeSpawner: {fileID: 54046627}
   camera_anim: {fileID: 1042419814}
 --- !u!1001 &1943649598
 PrefabInstance:

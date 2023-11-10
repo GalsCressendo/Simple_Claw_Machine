@@ -9,11 +9,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Animator camera_animator;
+    [SerializeField] private PrizeSpawn prizeSpawner;
+
+    [Header("UI")]
     public static bool gameIsOver = true;
     public WinScreenUI winScreenUI;
     public GameObject rewardPopUpCamera;
     private const float UI_DELAY = 3.5f;
-    [SerializeField] private PrizeSpawn prizeSpawner;
+    [SerializeField] private MainMenuUI mainMenuUI;
+
 
     private void Start()
     {
@@ -39,8 +43,13 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(true);
         }
 
+        DestoyAllPrizes();
+    }
+
+    public void DestoyAllPrizes()
+    {
         var prizes = GameObject.FindGameObjectsWithTag("Prize");
-        foreach(GameObject p in prizes)
+        foreach (GameObject p in prizes)
         {
             Destroy(p);
         }
@@ -49,6 +58,7 @@ public class GameManager : MonoBehaviour
     private void SetWinUIButtonListeners()
     {
         winScreenUI.retryButton.onClick.AddListener(RetryButtonClicked);
+        winScreenUI.mainMenuButton.onClick.AddListener(MainMenuButtonClicked);
     }
 
     private void RetryButtonClicked()
@@ -62,6 +72,20 @@ public class GameManager : MonoBehaviour
 
         RestartGame();
 
+    }
+
+    private void MainMenuButtonClicked()
+    {
+        DestoyAllPrizes();
+        gameIsOver = true;
+        camera_animator.SetTrigger("gameStop");
+        winScreenUI.DestroyRewardPreview();
+        if (rewardPopUpCamera.activeInHierarchy)
+        {
+            rewardPopUpCamera.SetActive(false);
+        }
+
+        mainMenuUI.EnableMainMenu();
     }
 
     public void RestartGame()
