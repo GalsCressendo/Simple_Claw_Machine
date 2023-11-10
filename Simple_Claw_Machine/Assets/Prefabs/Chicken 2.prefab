@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 8824060318131400729}
   m_Layer: 0
   m_Name: Chicken 2
-  m_TagString: Untagged
+  m_TagString: Prize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

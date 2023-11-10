@@ -14,7 +14,7 @@ public class PrizeSpawn : MonoBehaviour
         StartCoroutine(SpawnPrizes());
     }
 
-    private IEnumerator SpawnPrizes()
+    public IEnumerator SpawnPrizes()
     {
         for (int i = 1; i <= prizeCount; i++)
         {

@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngineInternal;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class WinScreenUI : MonoBehaviour
 {
     [SerializeField]TextMeshProUGUI rewardText;
     [SerializeField]TextMeshProUGUI descriptionText;
     private GameObject rewardPreview;
+
+    [Header("Buttons")]
     [SerializeField] private GameObject menuButtons;
+    [SerializeField] public Button retryButton;
+    [SerializeField] public Button mainMenuButton;
+
     private Vector3 rewardPosition = new Vector3 (-1.8f, -2.65f, -6.39f);
     private float rewardUIScale = 0.2f;
 
@@ -50,5 +57,11 @@ public class WinScreenUI : MonoBehaviour
         {
             menuButtons.SetActive(true);
         }
+    }
+
+    public void DestroyRewardPreview()
+    {
+        if (rewardPreview != null)
+            Destroy(rewardPreview);
     }
 }
