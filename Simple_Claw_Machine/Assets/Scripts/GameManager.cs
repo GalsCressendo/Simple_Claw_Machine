@@ -43,16 +43,20 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(true);
         }
 
-        DestoyAllPrizes();
+        DestroyAllPrizes();
     }
 
-    public void DestoyAllPrizes()
+    public void DestroyAllPrizes()
     {
         var prizes = GameObject.FindGameObjectsWithTag("Prize");
-        foreach (GameObject p in prizes)
+        if(prizes != null)
         {
-            Destroy(p);
+            foreach (GameObject p in prizes)
+            {
+                Destroy(p);
+            }
         }
+
     }
 
     private void SetWinUIButtonListeners()
@@ -68,15 +72,13 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(false);
         }
 
-        winScreenUI.DestroyRewardPreview();
-
         RestartGame();
 
     }
 
     private void MainMenuButtonClicked()
     {
-        DestoyAllPrizes();
+        DestroyAllPrizes();
         gameIsOver = true;
         camera_animator.SetTrigger("gameStop");
         winScreenUI.DestroyRewardPreview();
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         gameIsOver = false;
+        DestroyAllPrizes();
         camera_animator.SetBool("getPrize", false);
         StartCoroutine(prizeSpawner.SpawnPrizes());
         ClawMovement.GameBeginState();

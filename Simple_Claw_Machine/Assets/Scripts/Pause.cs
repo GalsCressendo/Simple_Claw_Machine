@@ -24,6 +24,7 @@ public class Pause : MonoBehaviour
     {
         pauseButton.onClick.AddListener(EnablePausePanel);
         resumeButton.onClick.AddListener(ResumeButtonOnClick);
+        restartButton.onClick.AddListener(RestartButtonOnClick);
 
     }
 
@@ -38,15 +39,26 @@ public class Pause : MonoBehaviour
         gameManager.PauseGame();
     }
 
-    private void ResumeButtonOnClick()
+    private void DisablePausePanel()
     {
-        gameManager.ResumeGame();
         if (pausePanel.activeInHierarchy)
         {
             pausePanel.SetActive(false);
         }
 
         pauseButton.transform.parent.gameObject.SetActive(true);
+    }
+
+    private void ResumeButtonOnClick()
+    {
+        gameManager.ResumeGame();
+        DisablePausePanel();
+    }
+
+    private void RestartButtonOnClick()
+    {
+        gameManager.RestartGame();
+        DisablePausePanel();
     }
 
 
