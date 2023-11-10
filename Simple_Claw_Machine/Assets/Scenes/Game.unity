@@ -12766,6 +12766,11 @@ MonoBehaviour:
     isLoop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - audioName: Ambience
+    clip: {fileID: 8300000, guid: 0c4a6921a3a51a84186a8906e2398bde, type: 3}
+    isLoop: 1
+    playOnAwake: 1
+    source: {fileID: 0}
 --- !u!1 &2033848501
 GameObject:
   m_ObjectHideFlags: 0

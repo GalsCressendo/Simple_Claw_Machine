@@ -19,6 +19,7 @@ public class Audio : MonoBehaviour
     public const string CLAW1_AUDIO = "Claw1";
     public const string CLAW2_AUDIO = "Claw2";
     public const string START_AUDIO = "Start";
+    public const string AMBIENCE_AUDIO = "Ambience";
 
     public AudioAttribute[] audioAttribute;
 
@@ -38,7 +39,10 @@ public class Audio : MonoBehaviour
     private void Start()
     {
         Play(BGM_AUDIO);
-        DecreaseVolume(BGM_AUDIO, 0.5f);
+        SetVolume(BGM_AUDIO, 0.7f);
+
+        Play(AMBIENCE_AUDIO);
+        SetVolume(AMBIENCE_AUDIO, 0.7f);
     }
 
     public void Play(string audioName)
@@ -53,16 +57,12 @@ public class Audio : MonoBehaviour
         au.source.Stop();
     }
 
-    public void RaiseVolume(string audioName, float valueIncrease)
+    public void SetVolume(string name, float value)
     {
-        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == audioName);
-        au.source.volume += valueIncrease;
+        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == name);
+        au.source.volume = value;
     }
 
-    public void DecreaseVolume(string audioName, float valueDecrease)
-    {
-        AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == audioName);
-        au.source.volume -= valueDecrease;
-    }
+
 
 }
