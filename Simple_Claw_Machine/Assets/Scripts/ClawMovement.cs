@@ -70,6 +70,7 @@ public class ClawMovement : MonoBehaviour
         BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
         pipe1.transform.localPosition = Vector3.zero;
         pipe2.transform.localPosition = Vector3.zero;
+        EnableColliders();
     }
 
     private void Update()
@@ -148,9 +149,13 @@ public class ClawMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CLAW_STATE = ClawState.Grab;
-            audioManager.ButtonsClicked();
-            clawMoves = StartCoroutine(ClawGrabState());
+            if(CLAW_STATE == ClawState.None)
+            {
+                CLAW_STATE = ClawState.Grab;
+                audioManager.ButtonsClicked();
+                clawMoves = StartCoroutine(ClawGrabState());
+            }
+
         }
 
         if (CLAW_STATE == ClawState.Grab)
@@ -162,7 +167,7 @@ public class ClawMovement : MonoBehaviour
 
     private IEnumerator ClawGrabState()
     {
-
+        EnableColliders();
         //claw descending
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
