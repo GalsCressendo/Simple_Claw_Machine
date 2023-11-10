@@ -13661,7 +13661,7 @@ MonoBehaviour:
   camera_anim: {fileID: 1042419814}
   gameManager: {fileID: 1552298070}
   audioManager: {fileID: 2010171647}
-  backButton: {fileID: 0}
+  guideBackButton: {fileID: 2129241005}
   GuideContainer: {fileID: 789875254}
   StartButton: {fileID: 849073203}
   GuideButton: {fileID: 1684048557}

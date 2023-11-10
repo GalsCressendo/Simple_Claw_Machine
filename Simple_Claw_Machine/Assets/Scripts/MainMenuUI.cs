@@ -12,7 +12,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] Audio audioManager;
 
     [Header("GUIDE UI")]
-    [SerializeField] Button backButton;
+    [SerializeField] Button guideBackButton;
     [SerializeField] GameObject GuideContainer;
 
     [Header("Buttons")]
@@ -23,24 +23,34 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         GameManager.gameIsOver = true;
+        GuideContainer.SetActive(false);
         gameManager.DisablePauseButton();
+
         StartButton.onClick.AddListener(GameStart);
         GuideButton.onClick.AddListener(ShowTutorial);
-        GuideContainer.SetActive(false);
-    }
+        guideBackButton.onClick.AddListener(HideTutorial);
 
-    private void HideMainButtons()
-    {
-        StartButton.gameObject.SetActive(false);
-        GuideButton.gameObject.SetActive(false);
-        ExitButton.gameObject.SetActive(false);
     }
 
     private void ShowTutorial()
     {
         audioManager.ButtonsClicked();
-        HideMainButtons();
+        ShowMainButtons(false);
         GuideContainer.SetActive(true);
+    }
+
+    private void HideTutorial()
+    {
+        audioManager.ButtonsClicked();
+        ShowMainButtons(true);
+        GuideContainer.SetActive(false);
+    }
+
+    private void ShowMainButtons(bool show)
+    {
+        StartButton.gameObject.SetActive(show);
+        GuideButton.gameObject.SetActive(show);
+        ExitButton.gameObject.SetActive(show);
     }
 
     private void GameStart()
