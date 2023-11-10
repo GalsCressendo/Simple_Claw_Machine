@@ -95,4 +95,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(prizeSpawner.SpawnPrizes());
         ClawMovement.GameBeginState();
     }
+
+    public void ResumeGame() => gameIsOver = false;
+    public void PauseGame() => gameIsOver = true;
 }

@@ -9558,6 +9558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 347405973}
   pauseButton: {fileID: 1745326274}
+  gameManager: {fileID: 1552298070}
 --- !u!1 &1471598792
 GameObject:
   m_ObjectHideFlags: 0
