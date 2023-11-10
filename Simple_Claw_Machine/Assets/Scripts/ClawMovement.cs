@@ -49,6 +49,9 @@ public class ClawMovement : MonoBehaviour
     private Quaternion left_initialRotation;
     private const float angle_z = 70f;
 
+    [Header("Colliders")]
+    [SerializeField] private Collider[] colliders;
+
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
@@ -67,6 +70,8 @@ public class ClawMovement : MonoBehaviour
         leftHand.transform.localRotation=left_initialRotation;
         LeftRight.transform.position = new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z);
         BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
+        pipe1.transform.localPosition = Vector3.zero;
+        pipe2.transform.localPosition = Vector3.zero;
     }
 
     private void Update()
@@ -185,13 +190,13 @@ public class ClawMovement : MonoBehaviour
         //rising state
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, new Vector3(pipe2.transform.localPosition.x, 0, pipe2.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
+            pipe2.transform.localPosition = Vector3.Lerp(pipe2.transform.localPosition, Vector3.zero, PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {
-            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, new Vector3(pipe1.transform.localPosition.x, 0, pipe1.transform.localPosition.z), PIPE_SPEED * Time.deltaTime);
+            pipe1.transform.localPosition = Vector3.Lerp(pipe1.transform.localPosition, Vector3.zero, PIPE_SPEED * Time.deltaTime);
             yield return null;
         }
 
@@ -216,6 +221,7 @@ public class ClawMovement : MonoBehaviour
             yield return null;
         }
 
+        DisableColliders();
         audioManager.StopClawMove2();
 
         if(!GameManager.gameIsOver)
@@ -223,5 +229,21 @@ public class ClawMovement : MonoBehaviour
             CLAW_STATE = ClawState.None;
         }
 
+    }
+
+    private void DisableColliders()
+    {
+        foreach(Collider col in colliders)
+        {
+            col.enabled = false;
+        }
+    }
+
+    private void EnableColliders()
+    {
+        foreach (Collider col in colliders)
+        {
+            col.enabled = true;
+        }
     }
 }
