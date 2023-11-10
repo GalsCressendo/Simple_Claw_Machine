@@ -9556,6 +9556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc31f806e2fab0428d878c21fd1bf87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 347405973}
+  pauseButton: {fileID: 1745326274}
 --- !u!1 &1471598792
 GameObject:
   m_ObjectHideFlags: 0
