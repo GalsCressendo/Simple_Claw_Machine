@@ -3,7 +3,7 @@ This repository is a Unity Game Project that simulates an arcade claw machine. T
 
 ## How to run the .exe
 1. Clone the repository to your local device, or download it as `.zip`.
-2. Run the .exe file that located in [Build/The Clawers - Simple Claw Machine.exe](https://github.com/GalsCressendo/Simple_Claw_Machine/blob/master/Build/The%20Crawler%20-%20Simple%20claw%20machine.exe)
+2. Run the .exe file that located in [Build/The Clawers - Simple Claw Machine.exe](https://github.com/GalsCressendo/Simple_Claw_Machine/tree/master/Build)
 3. Enjoy!
 
 ## How to play the game
