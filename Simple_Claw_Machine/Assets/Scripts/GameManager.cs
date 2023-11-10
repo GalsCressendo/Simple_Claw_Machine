@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator DisplayWinUI(Prize prize)
     {
         winScreenUI.DisplayRewardScreen(prize.attribute);
+        audioManager.StopClawMove1();
+        audioManager.StopClawMove2();
 
         yield return new WaitForSeconds(UI_DELAY);
         ShowRewardUI(true);
@@ -76,6 +78,8 @@ public class GameManager : MonoBehaviour
         EnablePauseButton();
         RestartGame();
         audioManager.PlayResetButtonClicked();
+        audioManager.StopClawMove1();
+        audioManager.StopClawMove2();
 
     }
 
@@ -92,6 +96,8 @@ public class GameManager : MonoBehaviour
         mainMenuUI.EnableMainMenu();
         claw.ResetClawPosition();
         audioManager.ButtonsClicked();
+        audioManager.StopClawMove1();
+        audioManager.StopClawMove2();
     }
 
     public void RestartGame()
