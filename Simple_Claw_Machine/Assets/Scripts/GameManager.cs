@@ -1,9 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,24 +32,28 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DisplayWinUI(prize));
     }
 
+    private void ShowRewardUI(bool show)
+    {
+        rewardPopUpCamera.SetActive(show);
+        winScreenUI.gameObject.SetActive(show);
+    }
+
     public IEnumerator DisplayWinUI(Prize prize)
     {
         winScreenUI.DisplayRewardScreen(prize.attribute);
 
         yield return new WaitForSeconds(UI_DELAY);
-        if(!rewardPopUpCamera.activeInHierarchy)
-        {
-            rewardPopUpCamera.SetActive(true);
-        }
+        ShowRewardUI(true);
 
         audioManager.Win();
         DestroyAllPrizes();
     }
 
+
     public void DestroyAllPrizes()
     {
         var prizes = GameObject.FindGameObjectsWithTag("Prize");
-        if(prizes != null)
+        if (prizes != null)
         {
             foreach (GameObject p in prizes)
             {
@@ -72,10 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void RetryButtonOnRewardUIClicked()
     {
-        if (rewardPopUpCamera.activeInHierarchy)
-        {
-            rewardPopUpCamera.SetActive(false);
-        }
+        ShowRewardUI(false);
 
         EnablePauseButton();
         RestartGame();
@@ -87,12 +83,10 @@ public class GameManager : MonoBehaviour
     {
         DestroyAllPrizes();
         gameIsOver = true;
-        camera_animator.SetBool("gameStop",true);
+        camera_animator.SetBool("gameStop", true);
         winScreenUI.DestroyRewardPreview();
-        if (rewardPopUpCamera.activeInHierarchy)
-        {
-            rewardPopUpCamera.SetActive(false);
-        }
+
+        ShowRewardUI(false);
 
         DisablePauseButton();
         mainMenuUI.EnableMainMenu();

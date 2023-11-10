@@ -57,6 +57,7 @@ public class WinScreenUI : MonoBehaviour
         {
             menuButtons.SetActive(true);
         }
+
     }
 
     public void DestroyRewardPreview()
