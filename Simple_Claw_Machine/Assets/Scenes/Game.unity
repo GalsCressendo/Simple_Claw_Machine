@@ -356,7 +356,7 @@ MonoBehaviour:
   - {fileID: 7858523234314516654, guid: a13228d0620314b4cae41e397eed8695, type: 3}
   - {fileID: 7858523234314516654, guid: 79c1c940581961c4194b34e5d5fdd787, type: 3}
   - {fileID: 7858523234314516654, guid: a9891a684caa46448be2330587d84a01, type: 3}
-  prizeCount: 45
+  prizeCount: 30
 --- !u!1 &106521807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2023,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: fd2ca6f145c02cd43a054da3dcdca73e, type: 3}
   m_PrefabInstance: {fileID: 224557272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &234567071 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8086889441830034098, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &239899330
 PrefabInstance:
@@ -4902,6 +4907,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806541168}
   m_CullTransparentMesh: 1
+--- !u!65 &814834628 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4552776001073275405, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &841664695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4956,6 +4966,11 @@ MonoBehaviour:
   menuButtons: {fileID: 1553351095}
   retryButton: {fileID: 223575791}
   mainMenuButton: {fileID: 136476258}
+--- !u!135 &844778974 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 18422605605950411, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &849073201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5743,6 +5758,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902959574}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &919591061 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4584774389954133290, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &973555647
 GameObject:
   m_ObjectHideFlags: 0
@@ -6777,6 +6797,15 @@ MonoBehaviour:
   pipe2: {fileID: 1072428055}
   rightHand: {fileID: 1405529047}
   leftHand: {fileID: 488639155}
+  colliders:
+  - {fileID: 1159072385}
+  - {fileID: 844778974}
+  - {fileID: 919591061}
+  - {fileID: 234567071}
+  - {fileID: 814834628}
+  - {fileID: 2016389071}
+  - {fileID: 1375602354}
+  - {fileID: 1423555216}
 --- !u!1 &1111171912
 GameObject:
   m_ObjectHideFlags: 0
@@ -7196,6 +7225,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158229754}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1159072385 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5430515546577790655, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1164258596
 GameObject:
   m_ObjectHideFlags: 0
@@ -9066,6 +9100,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367091674}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1375602354 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 9010790286151003242, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1388745056
 GameObject:
   m_ObjectHideFlags: 0
@@ -9182,6 +9221,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4865064391339405807, guid: fd2ca6f145c02cd43a054da3dcdca73e, type: 3}
   m_PrefabInstance: {fileID: 224557272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1423555216 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4180695249261249142, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1436103478
 GameObject:
@@ -12785,6 +12829,11 @@ MonoBehaviour:
     isLoop: 0
     playOnAwake: 0
     source: {fileID: 0}
+--- !u!135 &2016389071 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 3023229625269727999, guid: 0c30eaddfe4a3424ab849e5119cf4625, type: 3}
+  m_PrefabInstance: {fileID: 239899330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033848501
 GameObject:
   m_ObjectHideFlags: 0
