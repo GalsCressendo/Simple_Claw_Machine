@@ -20,6 +20,7 @@ public class Audio : MonoBehaviour
     public const string CLAW2_AUDIO = "Claw2";
     public const string START_AUDIO = "Start";
     public const string AMBIENCE_AUDIO = "Ambience";
+    public const string BUTTONS_AUDIO = "Buttons";
 
     public AudioAttribute[] audioAttribute;
 
@@ -76,6 +77,12 @@ public class Audio : MonoBehaviour
         SetVolume(BGM_AUDIO, 1f);
 
         Stop(AMBIENCE_AUDIO);
+    }
+
+    public void ButtonsClicked()
+    {
+        Play(BUTTONS_AUDIO);
+        SetVolume(START_AUDIO, 1);
     }
 
 

@@ -9303,6 +9303,7 @@ MonoBehaviour:
   gameManager: {fileID: 1552298070}
   restartButton: {fileID: 1790449730}
   mainMenuButton: {fileID: 608450042}
+  audioManager: {fileID: 2010171647}
 --- !u!1 &1471598792
 GameObject:
   m_ObjectHideFlags: 0
@@ -12435,6 +12436,7 @@ MonoBehaviour:
   prizeSpawner: {fileID: 54046627}
   camera_anim: {fileID: 1042419814}
   gameManager: {fileID: 1552298070}
+  audioManager: {fileID: 2010171647}
 --- !u!1 &1902964946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12770,6 +12772,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0c4a6921a3a51a84186a8906e2398bde, type: 3}
     isLoop: 1
     playOnAwake: 1
+    source: {fileID: 0}
+  - audioName: Buttons
+    clip: {fileID: 8300000, guid: 53bf1a97c4d1f7c43be3913834617a92, type: 3}
+    isLoop: 0
+    playOnAwake: 0
     source: {fileID: 0}
 --- !u!1 &2033848501
 GameObject:
