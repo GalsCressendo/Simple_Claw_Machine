@@ -9,6 +9,7 @@ public class WinScreenUI : MonoBehaviour
     [SerializeField]TextMeshProUGUI rewardText;
     [SerializeField]TextMeshProUGUI descriptionText;
     private GameObject rewardPreview;
+    [SerializeField] private GameObject menuButtons;
     private Vector3 rewardPosition = new Vector3 (-1.8f, -2.65f, -6.39f);
     private float rewardUIScale = 0.2f;
 
@@ -16,6 +17,16 @@ public class WinScreenUI : MonoBehaviour
     {
         ModifyWinningScreenText(prize.prizeName, prize.description);
         SpawnRewardPreview(prize.UI_Gameobject);
+    }
+
+    private void OnEnable()
+    {
+        if (menuButtons.activeInHierarchy)
+        {
+            menuButtons.SetActive(false);
+        }
+
+        StartCoroutine(EnableButtons());
     }
 
     private void ModifyWinningScreenText(string prizeName, string description)
@@ -30,5 +41,14 @@ public class WinScreenUI : MonoBehaviour
     {
         rewardPreview = Instantiate(rewardUI, rewardPosition, Quaternion.identity);
         rewardPreview.transform.localScale = new Vector3(rewardUIScale, rewardUIScale, rewardUIScale);
+    }
+
+    private IEnumerator EnableButtons()
+    {
+        yield return new WaitForSeconds(1.5f);
+        if(!menuButtons.activeInHierarchy)
+        {
+            menuButtons.SetActive(true);
+        }
     }
 }
