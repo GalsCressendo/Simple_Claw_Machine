@@ -20,6 +20,8 @@ public class ClawMovement : MonoBehaviour
     private const float SPEED = 0.8f;
     private Vector3 DROPBOX_POS;
 
+    Coroutine clawMoves;
+
     [Header("MOTOR")]
     private const float LEFT_LIMIT = -1.6f;
     private const float RIGHT_LIMIT = 0.6f;
@@ -46,8 +48,6 @@ public class ClawMovement : MonoBehaviour
     private Quaternion left_initialRotation;
     private const float angle_z = 70f;
 
-    Coroutine clawMoves;
-
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
@@ -73,6 +73,11 @@ public class ClawMovement : MonoBehaviour
         if(GameManager.gameIsOver)
         {
             CLAW_STATE = ClawState.Off;
+            if(clawMoves != null)
+            {
+                StopCoroutine(clawMoves);
+
+            }
         }
 
         if (CLAW_STATE == ClawState.None)

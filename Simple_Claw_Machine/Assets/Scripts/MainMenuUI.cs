@@ -9,11 +9,13 @@ public class MainMenuUI : MonoBehaviour
     public GameObject Panel;
     public PrizeSpawn prizeSpawner;
     public Animator camera_anim;
+    public GameManager gameManager;
 
 
     private void Start()
     {
         GameManager.gameIsOver = true;
+        gameManager.DisablePauseButton();
         StartButton.onClick.AddListener(GameStart);
     }
 
@@ -40,6 +42,7 @@ public class MainMenuUI : MonoBehaviour
 
     IEnumerator GameBeginSequence()
     {
+        gameManager.EnablePauseButton();
         camera_anim.SetTrigger("gameBegin");
         camera_anim.SetBool("getPrize", false);
         camera_anim.SetBool("gameStop", false);
