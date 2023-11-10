@@ -62,7 +62,6 @@ public class Pause : MonoBehaviour
 
     private void MainMenuButtonOnClick()
     {
-        audioManager.ButtonsClicked();
         gameManager.MainMenuButtonClicked();
         DisablePausePanel();
     }

@@ -10113,6 +10113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera_animator: {fileID: 1042419814}
   prizeSpawner: {fileID: 54046627}
+  audioManager: {fileID: 2010171647}
   winScreenUI: {fileID: 841664697}
   rewardPopUpCamera: {fileID: 188924108}
   mainMenuUI: {fileID: 1854362419}
