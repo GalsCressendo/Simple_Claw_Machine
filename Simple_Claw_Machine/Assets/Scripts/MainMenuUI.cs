@@ -29,6 +29,7 @@ public class MainMenuUI : MonoBehaviour
         StartButton.onClick.AddListener(GameStart);
         GuideButton.onClick.AddListener(ShowTutorial);
         guideBackButton.onClick.AddListener(HideTutorial);
+        ExitButton.onClick.AddListener(ExitGame);
 
     }
 
@@ -51,6 +52,12 @@ public class MainMenuUI : MonoBehaviour
         StartButton.gameObject.SetActive(show);
         GuideButton.gameObject.SetActive(show);
         ExitButton.gameObject.SetActive(show);
+    }
+
+    private void ExitGame()
+    {
+       Debug.Log("QUIT GAME");
+       Application.Quit();
     }
 
     private void GameStart()
