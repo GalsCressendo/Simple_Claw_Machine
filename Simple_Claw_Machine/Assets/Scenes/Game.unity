@@ -343,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &136111344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &188924110
 Camera:
   m_ObjectHideFlags: 0
@@ -1664,8 +1664,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: why is it look so silly?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
-  m_sharedMaterial: {fileID: 1112032260634083474, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cee2818869911664f986c2c13be984ce, type: 2}
+  m_sharedMaterial: {fileID: -1177767299762452252, guid: cee2818869911664f986c2c13be984ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   m_text: START
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
-  m_sharedMaterial: {fileID: 1112032260634083474, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
+  m_sharedMaterial: {fileID: 7098089311710669978, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2099,7 +2099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &841664696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2426,8 +2426,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: THE CLAWERS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
-  m_sharedMaterial: {fileID: 1112032260634083474, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7389cc280dd267743a0eb7d239542dd9, type: 2}
+  m_sharedMaterial: {fileID: -5398693729356175791, guid: 7389cc280dd267743a0eb7d239542dd9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3527,8 +3527,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'YOU GOT A BROWN DOG! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
-  m_sharedMaterial: {fileID: 1112032260634083474, guid: f8043ed2108273e429ea394c27c25f1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cee2818869911664f986c2c13be984ce, type: 2}
+  m_sharedMaterial: {fileID: -1177767299762452252, guid: cee2818869911664f986c2c13be984ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
