@@ -38,11 +38,7 @@ public class Audio : MonoBehaviour
 
     private void Start()
     {
-        Play(BGM_AUDIO);
-        SetVolume(BGM_AUDIO, 0.7f);
-
-        Play(AMBIENCE_AUDIO);
-        SetVolume(AMBIENCE_AUDIO, 0.7f);
+        MainMenuAudio();
     }
 
     public void Play(string audioName)
@@ -61,6 +57,25 @@ public class Audio : MonoBehaviour
     {
         AudioAttribute au = Array.Find(audioAttribute, s => s.audioName == name);
         au.source.volume = value;
+    }
+
+    public void MainMenuAudio()
+    {
+        Play(BGM_AUDIO);
+        SetVolume(BGM_AUDIO, 0.7f);
+
+        Play(AMBIENCE_AUDIO);
+        SetVolume(AMBIENCE_AUDIO, 0.7f);
+    }
+
+    public void PlayResetButtonClicked()
+    {
+        Play(START_AUDIO);
+        SetVolume(START_AUDIO, 1);
+
+        SetVolume(BGM_AUDIO, 1f);
+
+        Stop(AMBIENCE_AUDIO);
     }
 
 
