@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class ClawMovement : MonoBehaviour
@@ -45,10 +46,11 @@ public class ClawMovement : MonoBehaviour
     private Quaternion left_initialRotation;
     private const float angle_z = 70f;
 
+    Coroutine clawMoves;
+
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
-
         right_initialRotation = rightHand.transform.localRotation;
         left_initialRotation = leftHand.transform.localRotation;
     }
@@ -56,6 +58,14 @@ public class ClawMovement : MonoBehaviour
     public static void GameBeginState()
     {
         CLAW_STATE = ClawState.None;
+    }
+
+    public void ResetClawPosition()
+    {
+        rightHand.transform.localRotation = right_initialRotation;
+        leftHand.transform.localRotation=left_initialRotation;
+        LeftRight.transform.position = new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z);
+        BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
     }
 
     private void Update()
@@ -117,13 +127,14 @@ public class ClawMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CLAW_STATE = ClawState.Grab;
-            StartCoroutine(ClawGrabState());
+            clawMoves = StartCoroutine(ClawGrabState());
         }
 
     }
 
     private IEnumerator ClawGrabState()
     {
+
         //claw descending
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {

@@ -12,7 +12,6 @@ public class Pause : MonoBehaviour
 
     [Header("In Game Menu Buttons")]
     [SerializeField] Button resumeButton;
-    [SerializeField] Button restartButton;
     [SerializeField] Button mainMenuButton;
 
     private void OnEnable()
@@ -24,7 +23,6 @@ public class Pause : MonoBehaviour
     {
         pauseButton.onClick.AddListener(EnablePausePanel);
         resumeButton.onClick.AddListener(ResumeButtonOnClick);
-        restartButton.onClick.AddListener(RestartButtonOnClick);
         mainMenuButton.onClick.AddListener(MainMenuButtonOnClick);
 
     }
@@ -53,12 +51,6 @@ public class Pause : MonoBehaviour
     private void ResumeButtonOnClick()
     {
         gameManager.ResumeGame();
-        DisablePausePanel();
-    }
-
-    private void RestartButtonOnClick()
-    {
-        gameManager.RestartGame();
         DisablePausePanel();
     }
 

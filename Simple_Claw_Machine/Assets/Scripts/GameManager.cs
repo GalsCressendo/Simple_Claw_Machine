@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject rewardPopUpCamera;
     private const float UI_DELAY = 3.5f;
     [SerializeField] private MainMenuUI mainMenuUI;
+    [SerializeField] private ClawMovement claw;
 
 
     private void Start()
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
         }
 
         mainMenuUI.EnableMainMenu();
+        claw.ResetClawPosition();
     }
 
     public void RestartGame()
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         camera_animator.SetBool("getPrize", false);
         StartCoroutine(prizeSpawner.SpawnPrizes());
         ClawMovement.GameBeginState();
+        claw.ResetClawPosition();
     }
 
     public void ResumeGame()
