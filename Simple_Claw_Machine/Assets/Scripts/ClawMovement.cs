@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class ClawMovement : MonoBehaviour
@@ -18,6 +19,8 @@ public class ClawMovement : MonoBehaviour
 
     private const float SPEED = 0.8f;
     private Vector3 DROPBOX_POS;
+
+    Coroutine clawMoves;
 
     [Header("MOTOR")]
     private const float LEFT_LIMIT = -1.6f;
@@ -48,7 +51,6 @@ public class ClawMovement : MonoBehaviour
     private void Start()
     {
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
-
         right_initialRotation = rightHand.transform.localRotation;
         left_initialRotation = leftHand.transform.localRotation;
     }
@@ -58,11 +60,24 @@ public class ClawMovement : MonoBehaviour
         CLAW_STATE = ClawState.None;
     }
 
+    public void ResetClawPosition()
+    {
+        rightHand.transform.localRotation = right_initialRotation;
+        leftHand.transform.localRotation=left_initialRotation;
+        LeftRight.transform.position = new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z);
+        BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
+    }
+
     private void Update()
     {
         if(GameManager.gameIsOver)
         {
             CLAW_STATE = ClawState.Off;
+            if(clawMoves != null)
+            {
+                StopCoroutine(clawMoves);
+
+            }
         }
 
         if (CLAW_STATE == ClawState.None)
@@ -117,13 +132,14 @@ public class ClawMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CLAW_STATE = ClawState.Grab;
-            StartCoroutine(ClawGrabState());
+            clawMoves = StartCoroutine(ClawGrabState());
         }
 
     }
 
     private IEnumerator ClawGrabState()
     {
+
         //claw descending
         for (float t = 0; t < PIPE_DURATION; t += Time.deltaTime)
         {

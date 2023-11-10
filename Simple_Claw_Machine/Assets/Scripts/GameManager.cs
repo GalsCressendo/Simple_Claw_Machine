@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject rewardPopUpCamera;
     private const float UI_DELAY = 3.5f;
     [SerializeField] private MainMenuUI mainMenuUI;
-
+    [SerializeField] private ClawMovement claw;
+    [SerializeField] private Button pauseButton;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(prize.attribute.prizeName);
         gameIsOver = true;
         camera_animator.SetBool("getPrize", true);
+        DisablePauseButton();
 
         StartCoroutine(DisplayWinUI(prize));
     }
@@ -43,56 +46,68 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(true);
         }
 
-        DestoyAllPrizes();
+        DestroyAllPrizes();
     }
 
-    public void DestoyAllPrizes()
+    public void DestroyAllPrizes()
     {
         var prizes = GameObject.FindGameObjectsWithTag("Prize");
-        foreach (GameObject p in prizes)
+        if(prizes != null)
         {
-            Destroy(p);
+            foreach (GameObject p in prizes)
+            {
+                Destroy(p);
+            }
         }
+
     }
 
     private void SetWinUIButtonListeners()
     {
-        winScreenUI.retryButton.onClick.AddListener(RetryButtonClicked);
+        winScreenUI.retryButton.onClick.AddListener(RetryButtonOnRewardUIClicked);
         winScreenUI.mainMenuButton.onClick.AddListener(MainMenuButtonClicked);
     }
 
-    private void RetryButtonClicked()
+    private void RetryButtonOnRewardUIClicked()
     {
         if (rewardPopUpCamera.activeInHierarchy)
         {
             rewardPopUpCamera.SetActive(false);
         }
 
-        winScreenUI.DestroyRewardPreview();
-
+        EnablePauseButton();
         RestartGame();
 
     }
 
-    private void MainMenuButtonClicked()
+    public void MainMenuButtonClicked()
     {
-        DestoyAllPrizes();
+        DestroyAllPrizes();
         gameIsOver = true;
-        camera_animator.SetTrigger("gameStop");
+        camera_animator.SetBool("gameStop",true);
         winScreenUI.DestroyRewardPreview();
         if (rewardPopUpCamera.activeInHierarchy)
         {
             rewardPopUpCamera.SetActive(false);
         }
 
+        DisablePauseButton();
         mainMenuUI.EnableMainMenu();
+        claw.ResetClawPosition();
     }
 
     public void RestartGame()
     {
         gameIsOver = false;
+        DestroyAllPrizes();
         camera_animator.SetBool("getPrize", false);
         StartCoroutine(prizeSpawner.SpawnPrizes());
         ClawMovement.GameBeginState();
+        claw.ResetClawPosition();
     }
+
+    public void PauseGame() => gameIsOver = true;
+
+    public void DisablePauseButton() => pauseButton.transform.parent.gameObject.SetActive(false);
+    public void EnablePauseButton() => pauseButton.transform.parent.gameObject.SetActive(true);
 }
