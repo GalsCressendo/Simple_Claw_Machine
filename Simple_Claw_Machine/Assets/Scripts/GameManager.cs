@@ -99,6 +99,11 @@ public class GameManager : MonoBehaviour
         ClawMovement.GameBeginState();
     }
 
-    public void ResumeGame() => gameIsOver = false;
+    public void ResumeGame()
+    {
+        gameIsOver = false;
+        ClawMovement.GameBeginState();
+    }
+
     public void PauseGame() => gameIsOver = true;
 }
