@@ -6772,6 +6772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftRight: {fileID: 1599185934}
   BackFront: {fileID: 867951813}
+  audioManager: {fileID: 2010171647}
   pipe1: {fileID: 755604149}
   pipe2: {fileID: 1072428055}
   rightHand: {fileID: 1405529047}
@@ -9303,6 +9304,7 @@ MonoBehaviour:
   gameManager: {fileID: 1552298070}
   restartButton: {fileID: 1790449730}
   mainMenuButton: {fileID: 608450042}
+  audioManager: {fileID: 2010171647}
 --- !u!1 &1471598792
 GameObject:
   m_ObjectHideFlags: 0
@@ -10112,6 +10114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera_animator: {fileID: 1042419814}
   prizeSpawner: {fileID: 54046627}
+  audioManager: {fileID: 2010171647}
   winScreenUI: {fileID: 841664697}
   rewardPopUpCamera: {fileID: 188924108}
   mainMenuUI: {fileID: 1854362419}
@@ -12435,6 +12438,7 @@ MonoBehaviour:
   prizeSpawner: {fileID: 54046627}
   camera_anim: {fileID: 1042419814}
   gameManager: {fileID: 1552298070}
+  audioManager: {fileID: 2010171647}
 --- !u!1 &1902964946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12701,6 +12705,86 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957359125}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2010171645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010171646}
+  - component: {fileID: 2010171647}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2010171646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010171645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010171647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010171645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be898089676712e48b6b30f2d3e058a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAttribute:
+  - audioName: BGM
+    clip: {fileID: 8300000, guid: cc8d29d7f8569f84b8f53256eab698ea, type: 3}
+    isLoop: 1
+    playOnAwake: 1
+    source: {fileID: 0}
+  - audioName: Claw1
+    clip: {fileID: 8300000, guid: 009cfa5598d533048a18960a76caa94a, type: 3}
+    isLoop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - audioName: Claw2
+    clip: {fileID: 8300000, guid: 458ee0046e2aab34eac0e64623f69f73, type: 3}
+    isLoop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - audioName: Start
+    clip: {fileID: 8300000, guid: bd502412c44d2c14ab9677a7e6d75431, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - audioName: Ambience
+    clip: {fileID: 8300000, guid: 0c4a6921a3a51a84186a8906e2398bde, type: 3}
+    isLoop: 1
+    playOnAwake: 1
+    source: {fileID: 0}
+  - audioName: Buttons
+    clip: {fileID: 8300000, guid: 53bf1a97c4d1f7c43be3913834617a92, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - audioName: Win
+    clip: {fileID: 8300000, guid: 0ff161030f49065479395f173ebb3296, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &2033848501
 GameObject:
   m_ObjectHideFlags: 0
@@ -13077,6 +13161,7 @@ SceneRoots:
   - {fileID: 1042419813}
   - {fileID: 188924111}
   - {fileID: 1552298069}
+  - {fileID: 2010171646}
   - {fileID: 110787407}
   - {fileID: 1096430288}
   - {fileID: 54046626}

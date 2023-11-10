@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Animator camera_animator;
     [SerializeField] private PrizeSpawn prizeSpawner;
+    [SerializeField] private Audio audioManager;
 
     [Header("UI")]
     public static bool gameIsOver = true;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(true);
         }
 
+        audioManager.Win();
         DestroyAllPrizes();
     }
 
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
 
         EnablePauseButton();
         RestartGame();
+        audioManager.PlayResetButtonClicked();
 
     }
 
@@ -94,6 +97,7 @@ public class GameManager : MonoBehaviour
         DisablePauseButton();
         mainMenuUI.EnableMainMenu();
         claw.ResetClawPosition();
+        audioManager.ButtonsClicked();
     }
 
     public void RestartGame()

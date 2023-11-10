@@ -13,6 +13,7 @@ public class Pause : MonoBehaviour
     [Header("In Game Menu Buttons")]
     [SerializeField] Button restartButton;
     [SerializeField] Button mainMenuButton;
+    [SerializeField] Audio audioManager;
 
     private void OnEnable()
     {
@@ -45,6 +46,7 @@ public class Pause : MonoBehaviour
 
     private void PauseButtonOnClick()
     {
+        audioManager.ButtonsClicked();
         gameManager.PauseGame();
         EnablePausePanel();
         gameManager.DisablePauseButton();
@@ -52,6 +54,7 @@ public class Pause : MonoBehaviour
 
     private void RestartButtonOnClick()
     {
+        audioManager.PlayResetButtonClicked();
         gameManager.RestartGame();
         DisablePausePanel();
         gameManager.EnablePauseButton();

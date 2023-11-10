@@ -10,7 +10,7 @@ public class MainMenuUI : MonoBehaviour
     public PrizeSpawn prizeSpawner;
     public Animator camera_anim;
     public GameManager gameManager;
-
+    [SerializeField] Audio audioManager;
 
     private void Start()
     {
@@ -38,10 +38,12 @@ public class MainMenuUI : MonoBehaviour
         {
             Panel.SetActive(true);
         }
+        audioManager.MainMenuAudio();
     }
 
     IEnumerator GameBeginSequence()
     {
+        audioManager.PlayResetButtonClicked();
         gameManager.EnablePauseButton();
         camera_anim.SetTrigger("gameBegin");
         camera_anim.SetBool("getPrize", false);
