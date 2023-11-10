@@ -38,6 +38,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Panel.SetActive(true);
         }
+        audioManager.MainMenuAudio();
     }
 
     IEnumerator GameBeginSequence()

@@ -21,6 +21,7 @@ public class Audio : MonoBehaviour
     public const string START_AUDIO = "Start";
     public const string AMBIENCE_AUDIO = "Ambience";
     public const string BUTTONS_AUDIO = "Buttons";
+    public const string WIN_AUDIO = "Win";
 
     public AudioAttribute[] audioAttribute;
 
@@ -39,6 +40,7 @@ public class Audio : MonoBehaviour
 
     private void Start()
     {
+        Play(BGM_AUDIO);
         MainMenuAudio();
     }
 
@@ -62,7 +64,6 @@ public class Audio : MonoBehaviour
 
     public void MainMenuAudio()
     {
-        Play(BGM_AUDIO);
         SetVolume(BGM_AUDIO, 0.7f);
 
         Play(AMBIENCE_AUDIO);
@@ -83,6 +84,12 @@ public class Audio : MonoBehaviour
     {
         Play(BUTTONS_AUDIO);
         SetVolume(START_AUDIO, 1);
+    }
+
+    public void Win()
+    {
+        Play(WIN_AUDIO);
+        SetVolume(WIN_AUDIO,1f);
     }
 
 

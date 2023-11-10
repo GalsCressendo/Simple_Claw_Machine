@@ -12779,6 +12779,11 @@ MonoBehaviour:
     isLoop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - audioName: Win
+    clip: {fileID: 8300000, guid: 0ff161030f49065479395f173ebb3296, type: 3}
+    isLoop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
 --- !u!1 &2033848501
 GameObject:
   m_ObjectHideFlags: 0

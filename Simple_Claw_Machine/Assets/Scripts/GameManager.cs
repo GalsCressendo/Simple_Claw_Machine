@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
             rewardPopUpCamera.SetActive(true);
         }
 
+        audioManager.Win();
         DestroyAllPrizes();
     }
 
