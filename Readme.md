@@ -11,8 +11,15 @@ This repository is a Unity Game Project that simulates an arcade claw machine. T
 2. Press the spacebar to grab the prizes.
 3. Wait for the result!
 
+## Demo
+Here's a demo of what would happen if you managed to win the any prize in the game.
+
+https://github.com/GalsCressendo/Simple_Claw_Machine/assets/107536181/cfb9fca8-8453-44de-8adf-b77b64f0e8c8
+
+
+
 ## QnA
-- Q: Why is it so hard to win the game or win any prize?\
+- Q: Why is it so hard to win the game or win any prize?
 A: Just be patient, like the real arcade machine, you don't always win. I've tried my best to apply the physics. If there are any suggestion to make it better, it's always welcomed.
 
 - Q: Does the assets all original and licensed?\
