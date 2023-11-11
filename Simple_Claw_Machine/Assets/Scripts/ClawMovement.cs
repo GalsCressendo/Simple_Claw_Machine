@@ -39,12 +39,16 @@ public class ClawMovement : MonoBehaviour
     [Header("HANDS")]
     public GameObject rightHand;
     public GameObject leftHand;
+    public GameObject backHand;
+    public GameObject frontHand;
     private const float CLOSE_HAND_SPEED = 0.3f;
     private const float OPEN_HAND_SPEED = 1.5f;
     private const float CLOSE_HAND_TIME = 5f;
     private const float OPEN_HAND_TIME = 3f;
     private Quaternion right_initialRotation;
     private Quaternion left_initialRotation;
+    private Quaternion back_initialRotation;
+    private Quaternion front_initialRotation;
     private const float angle_z = 70f;
 
     [Header("Colliders")]
@@ -55,6 +59,8 @@ public class ClawMovement : MonoBehaviour
         DROPBOX_POS = new Vector3(LeftRight.transform.position.x, 0, BackFront.transform.position.z);
         right_initialRotation = rightHand.transform.localRotation;
         left_initialRotation = leftHand.transform.localRotation;
+        front_initialRotation = frontHand.transform.localRotation;
+        back_initialRotation = backHand.transform.localRotation;
     }
 
     public static void GameBeginState()
@@ -66,6 +72,8 @@ public class ClawMovement : MonoBehaviour
     {
         rightHand.transform.localRotation = right_initialRotation;
         leftHand.transform.localRotation = left_initialRotation;
+        frontHand.transform.localRotation = front_initialRotation;
+        backHand.transform.localRotation = back_initialRotation;
         LeftRight.transform.position = new Vector3(DROPBOX_POS.x, LeftRight.transform.position.y, LeftRight.transform.position.z);
         BackFront.transform.position = new Vector3(BackFront.transform.position.x, BackFront.transform.position.y, DROPBOX_POS.z);
         pipe1.transform.localPosition = Vector3.zero;
@@ -186,6 +194,10 @@ public class ClawMovement : MonoBehaviour
         {
             rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, Quaternion.Euler(rightHand.transform.localRotation.eulerAngles.x, rightHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
             leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, Quaternion.Euler(leftHand.transform.localRotation.eulerAngles.x, leftHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
+            backHand.transform.localRotation = Quaternion.Slerp(backHand.transform.localRotation, Quaternion.Euler(backHand.transform.localRotation.eulerAngles.x, backHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
+            frontHand.transform.localRotation = Quaternion.Slerp(frontHand.transform.localRotation, Quaternion.Euler(frontHand.transform.localRotation.eulerAngles.x, frontHand.transform.localRotation.eulerAngles.y, angle_z), CLOSE_HAND_SPEED * Time.deltaTime);
+
+
             yield return null;
         }
 
@@ -221,6 +233,8 @@ public class ClawMovement : MonoBehaviour
         {
             rightHand.transform.localRotation = Quaternion.Slerp(rightHand.transform.localRotation, right_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
             leftHand.transform.localRotation = Quaternion.Slerp(leftHand.transform.localRotation, left_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
+            backHand.transform.localRotation = Quaternion.Slerp(backHand.transform.localRotation, back_initialRotation, OPEN_HAND_SPEED * Time.deltaTime);
+            frontHand.transform.localRotation = Quaternion.Slerp(frontHand.transform.localRotation, front_initialRotation,OPEN_HAND_SPEED * Time.deltaTime);
             yield return null;
         }
 
